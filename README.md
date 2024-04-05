@@ -1,4 +1,4 @@
-<h1>To-Do APP 📝</h1>
+<h1>To-Do APP by Team 404📝 </h1>
 
 <p>To-Do app with React ⚛️ + Django 🐍</p>
 
