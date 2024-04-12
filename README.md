@@ -1,5 +1,11 @@
 <h1>To-Do APP by Team 404📝 </h1>
 
+Autors
+
+- Angelo Steeven Salamanca - 1151706 - AngeloSalamanca21 <br>
+- Antonio Josue Reyes Paredes - 1152095 - Josuereyes16 <br>
+- Jhony Alberto Fernandez Fernandez - 1151729 - Jhonyfer22 <br>
+
 <p>To-Do app with Python + Django</p>
 
 This is a task management project designed to help you organize your daily activities efficiently. With an intuitive and friendly interface, this To-Do App allows you to maintain full control over your pending tasks.
@@ -11,12 +17,6 @@ This is a task management project designed to help you organize your daily activ
 - **Recordatorios Personalizables**: Establece recordatorios para tus tareas importantes y recibe notificaciones oportunas para mantener tu productividad en marcha.
 - **Progress Markers**: Mark completed tasks and track your progress as you move through your to-do list.
 
-### Requirements
-
-1. Download Python (If you don't have it yet)
-2. Create the virtual environment (venv)
-3. Install Django
-
 ### Install
 
 1. Clone this repository
@@ -24,9 +24,32 @@ This is a task management project designed to help you organize your daily activ
    ```sh
    https://github.com/josuereyes16/backend-Todoapp404.git
    ```
+2. Create Virtual Env
 
-<h2>Autor</h2>
+```bash
+python -m venv venv
+.\venv\Scripts\activate 
+```
+3. Install the dependencies
 
-⚫ Angelo Steeven Salamanca - 1151706 - AngeloSalamanca21 <br>
-⚫ Antonio Josue Reyes Paredes - 1152095 - Josuereyes16 <br>
-⚫ Jhony Alberto Fernandez Fernandez - 1151729 - Jhonyfer22
+```bash
+pip install -r requirements.txt
+```
+4. Run the Server
+
+```bash
+make run or 
+python manage.py runserver
+```
+5. Open your browser  
+```bash
+http://localhost:8000/..... view the application
+```
+
+6. Linters
+
+```bash
+ruff check .
+```
+
+
