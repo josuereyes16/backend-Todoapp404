@@ -1,11 +1,11 @@
 @echo off
 
-rem Define los comandos para cada acción
+rem Define the commands for each action
 set COMMAND_RUN=python manage.py runserver
 set COMMAND_TEST=python manage.py test
 set COMMAND_LINT=black . & pep8 .
 
-rem Verifica el primer argumento (la acción a realizar)
+rem Check the first argument (the action to perform)
 if "%1" == "run" (
     %COMMAND_RUN%
 ) elseif "%1" == "test" (
@@ -13,5 +13,5 @@ if "%1" == "run" (
 ) elseif "%1" == "lint" (
     %COMMAND_LINT%
 ) else (
-    echo Comando no válido. Use 'run', 'test' o 'lint'.
+    echo Invalid command. Use 'run', 'test' or 'lint'.
 )
