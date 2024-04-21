@@ -1,7 +1,12 @@
-from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+
+from django.http import JsonResponse
+from django.core.serializers import serialize
+
+from .models import Task
 
 def index(request):
-    return HttpResponse("Hello Word")
+    tasks = Task.objects.all()
+    data = serialize("python", tasks)
+    return JsonResponse(data, safe=False)
