@@ -14,7 +14,7 @@ This is a task management project designed to help you organize your daily activ
 
 - **Task Creation**: Easily add new tasks with a descriptive title and additional details if necessary.
 - **Flexible Organization**: Sort your tasks by priority, due date, or simply in chronological order to suit your work style.
-- **Recordatorios Personalizables**: Establece recordatorios para tus tareas importantes y recibe notificaciones oportunas para mantener tu productividad en marcha.
+- **Customizable Reminders**: Set reminders for your important tasks and receive timely notifications to keep your productivity on track.
 - **Progress Markers**: Mark completed tasks and track your progress as you move through your to-do list.
 
 ### Install
