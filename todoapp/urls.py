@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from tasks.views import TaskViewSet
+from rest_framework import routers
 
+
+router = routers.DefaultRouter()
+router.register(r'tasks', TaskViewSet)
 
 urlpatterns = [
-    
-    path('users/', include('users.urls')),
-    path('tasks/', include('tasks.urls')),
-    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
 ]
