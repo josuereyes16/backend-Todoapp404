@@ -19,3 +19,7 @@ class Profile(AbstractUser):
     )
     password = models.CharField(max_length=128, default='temporary_password')  # Agregar un valor predeterminado
     username = models.CharField(max_length=150, unique=True, default='default_username')  # Agregar un valor predeterminado
+
+    class Meta:
+        verbose_name = 'Profile'
+        verbose_name_plural = 'Profiles'
