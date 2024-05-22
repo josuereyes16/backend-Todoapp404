@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -7,7 +8,7 @@ class Task(models.Model):
     description = models.TextField()
     priority = models.PositiveSmallIntegerField(default=0)
     user = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL, 
         on_delete=models.RESTRICT,
         limit_choices_to={'is_superuser': False},
         related_name='tasks',
@@ -17,3 +18,5 @@ class Task(models.Model):
 
     def _str_(self):
         return self.name
+    
+    AUTH_USER_MODEL = 'profiles.Profile'
