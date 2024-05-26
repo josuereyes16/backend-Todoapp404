@@ -5,10 +5,7 @@ from .models import Profile
 class ProfileCreationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['username', 'email', 'password']  # Incluye otros campos si es necesario
-        extra_kwargs = {
-            'password': {'write_only': True}
-        }
+        fields = ['username', 'password', 'email', 'bio']
 
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data.get('password'))

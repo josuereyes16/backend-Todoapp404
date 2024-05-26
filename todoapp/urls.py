@@ -17,25 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 # from tasks import views
-from profiles.views import  ProfileViewSet
 from tasks.views import TaskViewSet
 from rest_framework import routers
-from rest_framework.authtoken import views as rest_framework_views
-# from rest_framework.authtoken.views import obtain_auth_token
-# from profiles import views
+from rest_framework.authtoken import views
 
 router = routers.DefaultRouter()
 router.register(r'tasks', TaskViewSet)
-router.register(r'profiles', ProfileViewSet, basename='profile')
 
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/token/', views.obtain_auth_token),
     path('admin/', admin.site.urls),
-    path('api/token/', rest_framework_views.obtain_auth_token),
-    # path('api/profile/', views.profile_views.YourProfileView.as_view()), 
-    # path('api/profile/', include('profiles.urls')),  # Agrega la URL de profiles aquí
 
 ]
-
-
