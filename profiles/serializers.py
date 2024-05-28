@@ -2,6 +2,11 @@ from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from .models import Profile
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
 class ProfileCreationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
