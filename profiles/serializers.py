@@ -15,3 +15,10 @@ class ProfileCreationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data.get('password'))
         return super(ProfileCreationSerializer, self).create(validated_data)
+    
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.bio = validated_data.get('bio', instance.bio)
+        instance.save()
+        return instance
