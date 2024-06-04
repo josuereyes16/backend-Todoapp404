@@ -6,11 +6,11 @@ from .models import Task
 from .serializers import TaskSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.all()
+    queryset = Task.objects.all().order_by('id')
     serializer_class = TaskSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['completed']
     ordering_fields = ['priority']
 
     def get_queryset(self):
-        return self.request.user.tasks.all()
+        return self.request.user.tasks.all().order_by('id')
