@@ -6,6 +6,7 @@ from rest_framework.authtoken.models import Token
 
 from .models import Task
 
+
 class TaskTests(APITestCase):
     @classmethod
     def setUpClass(cls):
@@ -16,7 +17,11 @@ class TaskTests(APITestCase):
         cls.user.save()
         cls.token = Token.objects.create(user=cls.user)
         cls.task = Task.objects.create(
-            name="My Task", description="My task description", user=cls.user, priority=1, completed=False
+            name="My Task",
+            description="My task description",
+            user=cls.user,
+            priority=1,
+            completed=False,
         )
 
     @classmethod
@@ -47,7 +52,7 @@ class TaskTests(APITestCase):
             "name": "New Task",
             "description": "New task description",
             "priority": 2,
-            "completed": False
+            "completed": False,
         }
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -59,7 +64,7 @@ class TaskTests(APITestCase):
             "name": "Updated Task",
             "description": "Updated task description",
             "priority": 3,
-            "completed": True
+            "completed": True,
         }
         response = self.client.put(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -68,9 +73,7 @@ class TaskTests(APITestCase):
 
     def test_partial_update_task(self):
         url = reverse("task-detail", kwargs={"pk": self.task.id})
-        data = {
-            "completed": True
-        }
+        data = {"completed": True}
         response = self.client.patch(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.data.get("completed"))
@@ -83,7 +86,7 @@ class TaskTests(APITestCase):
 
     def test_filter_tasks_by_completed(self):
         url = reverse("task-list")
-        response = self.client.get(url, {'completed': False}, format="json")
+        response = self.client.get(url, {"completed": False}, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data.get("results")), 1)
         self.assertFalse(response.data.get("results")[0].get("completed"))

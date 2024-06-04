@@ -5,12 +5,13 @@ from rest_framework.filters import OrderingFilter
 from .models import Task
 from .serializers import TaskSerializer
 
+
 class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.all().order_by('id')
+    queryset = Task.objects.all().order_by("id")
     serializer_class = TaskSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = ['completed']
-    ordering_fields = ['priority']
+    filterset_fields = ["completed"]
+    ordering_fields = ["priority"]
 
     def get_queryset(self):
-        return self.request.user.tasks.all().order_by('id')
+        return self.request.user.tasks.all().order_by("id")

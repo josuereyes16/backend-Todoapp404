@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,14 +14,31 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('description', models.TextField()),
-                ('priority', models.PositiveSmallIntegerField(default=0)),
-                ('completed', models.BooleanField(default=False)),
-                ('user', models.ForeignKey(limit_choices_to={'is_superuser': False}, null=True, on_delete=django.db.models.deletion.RESTRICT, related_name='tasks', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                ("description", models.TextField()),
+                ("priority", models.PositiveSmallIntegerField(default=0)),
+                ("completed", models.BooleanField(default=False)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        limit_choices_to={"is_superuser": False},
+                        null=True,
+                        on_delete=django.db.models.deletion.RESTRICT,
+                        related_name="tasks",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
