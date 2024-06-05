@@ -90,3 +90,5 @@ class TaskTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data.get("results")), 1)
         self.assertFalse(response.data.get("results")[0].get("completed"))
+
+#tests.py on tasks
