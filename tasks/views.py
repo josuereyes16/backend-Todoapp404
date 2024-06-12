@@ -1,12 +1,17 @@
-
-# Create your views here.
-
-from django.http import JsonResponse
-from django.core.serializers import serialize
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+from rest_framework.filters import OrderingFilter
 
 from .models import Task
+from .serializers import TaskSerializer
 
-def index(request):
-    tasks = Task.objects.all()
-    data = serialize("python", tasks)
-    return JsonResponse(data, safe=False)
+
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all().order_by("id")
+    serializer_class = TaskSerializer
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ["completed"]
+    ordering_fields = ["priority"]
+
+    def get_queryset(self):
+        return self.request.user.tasks.all().order_by("id")
