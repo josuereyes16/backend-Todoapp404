@@ -7,3 +7,5 @@ Markdown==3.6
 PyJWT==2.8.0
 sqlparse==0.4.4
 python-decouple
+psycopg2-binary
+gunicorn
