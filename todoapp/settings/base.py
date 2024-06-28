@@ -98,6 +98,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -117,3 +118,6 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = "profiles.Profile"
+
+some_setting = "some_value"
+another_setting = "another_value"

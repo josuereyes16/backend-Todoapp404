@@ -1,5 +1,6 @@
-from .base import some_setting, another_setting  # noqa: F401
+from .base import BASE_DIR, some_setting, another_setting  # noqa: F401
 
+import os
 from decouple import config
 
 # Quick-start development settings - unsuitable for production
@@ -11,14 +12,13 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="").split()
+ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS").split(",")
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
-        "ENGINE": config("DB_ENGINE", default="django.db.backends.postgresql"),
+        "ENGINE": config("DB_ENGINE"),
         "NAME": config("DB_DATABASE"),
         "USER": config("DB_USER"),
         "PASSWORD": config("DB_PASSWORD"),
@@ -26,3 +26,10 @@ DATABASES = {
         "PORT": config("DB_PORT"),
     }
 }
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Add any additional production settings below
